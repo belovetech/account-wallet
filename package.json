@@ -6,6 +6,7 @@
     "start:dev": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prisma:migrate": "npx prisma migrate dev  --schema src/prisma/schema.prisma --name",
+    "prisma:deploy": "npx prisma migrate deploy --schema src/prisma/schema.prisma",
     "prisma:format": "npx prisma format --schema src/prisma/schema.prisma",
     "prisma:generate": "npx prisma generate --schema src/prisma/schema.prisma"
   },
