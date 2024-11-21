@@ -1,10 +1,9 @@
 import express, { type Application } from 'express';
-import { Request, Response, NextFunction } from 'express';
 import morgan from 'morgan';
 import pino from 'pino-http';
 import { IRoute } from '@interfaces';
 import { config } from '@config';
-import errorMiddleware from '@middlewares/errorMiddleware';
+import { errorMiddleware } from '@middlewares';
 
 export default class App {
   private app: Application;
@@ -39,11 +38,7 @@ export default class App {
   }
 
   private handleGlobalErrorHandler(): void {
-    this.app.use(
-      (err: any, req: Request, res: Response, next: NextFunction) => {
-        errorMiddleware(err, req, res, next);
-      }
-    );
+    this.app.use(errorMiddleware);
   }
 
   private initializeRoutes(routes: IRoute[]): void {
